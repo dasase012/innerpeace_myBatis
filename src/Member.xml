@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   
+<mapper namespace="ldg.mybatis">
+	
+<!-- 	 <select id="boardList" resultType="Board" parameterType="hashmap">
+         select * from board
+         <if test="num != null">
+            WHERE num = #{num}
+         </if>
+         <if test="boardid != null">
+            WHERE boardid = #{boardid}
+         </if>      
+      </select>  -->
+
+  	  <select id="getMembers" resultType="Member" parameterType="hashmap">
+         select * from (select rownum rnum,a.* from (select id,name,pwd,gender,birthdate,tel,email, 
+						con_past,con_date,con_cat,position,regdate	
+						from member order by regdate desc) 
+						a ) where rnum between #{startRow} and #{endRow}
+      </select>
+      <!-- <select id="getNextNumber" resultType="int">
+      	select boardser.nextval from dual
+      </select> -->
+
+      <select id="getMemberCount" resultType="int" parameterType="hashmap">
+         select nvl(count(*),0) from member
+         <if test="boardid != null">
+            WHERE boardid = #{boardid}
+         </if>
+      </select>
+      
+      <select id="getMember" parameterType="hashmap" resultType="Member">
+      	select * from member where id = #{id}
+      </select>   
+      
+      <insert id="insertData" parameterType="Member">
+      	insert into member(id,name,pwd,gender,birthdate,tel,email,
+      				 con_past,con_date,con_cat,position,regdate)
+					 values(#{id},#{name},#{pwd},#{gender},#{birthdate},#{tel},#{email},
+					 #{con_past},#{con_date},#{con_cat},#{position},sysdate)
+      </insert>
+      
+      <update id="updateData" parameterType="Member">
+    	update member set name=#{name},pwd=#{pwd}, email=#{email},birthdate=#{birthdate},tel=#{tel} 
+    				where id=#{id} and pwd=#{pwd}
+      </update>
+      
+      <delete id="deleteData" parameterType="hashmap">
+    	delete from board where num=#{num} and passwd = #{passwd}
+      </delete>
+      
+      
+      <select id="confirmId" parameterType="hashmap" resultType="map">
+      	select id from member where id = #{id}
+      </select>
+      
+      <select id="login" parameterType="hashmap" resultType="int">
+      	SELECT pwd FROM member WHERE id = #{id}
+      </select> 
+      <!-- <select id="login" parameterType="hashmap" resultType="map">
+         select passwd FROM userlist WHERE userid=#{userid}
+      </select> -->
+
+     
+</mapper>

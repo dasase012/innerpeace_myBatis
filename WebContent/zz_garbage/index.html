@@ -1,0 +1,53 @@
+<html>
+<body>
+  <div id="camera"></div>
+  <div id="screen-preview"></div>
+  <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+  <script type="text/javascript">
+
+    // Go to https://tokbox.com/account to find your OpenTok
+    // API key and generate a test session ID and token:
+    var apiKey    = "<46075422>";
+    var sessionId = "<2_MX40NjA3NTQyMn5-MTUyMDUyMTIyMjYyOH5mZlVzT1J2bnF2RHFwaStQTTk2Y0F3Kzl-UH4>";
+    var token     = "<T1==cGFydG5lcl9pZD00NjA3NTQyMiZzaWc9Y2JmNzY5MjhlNzU0MTU0MGRkNjUxMDE4MDQzNGUxZTBkYzg2Y2IzZTpzZXNzaW9uX2lkPTJfTVg0ME5qQTNOVFF5TW41LU1UVXlNRFV5TVRJeU1qWXlPSDVtWmxWelQxSjJibkYyUkhGd2FTdFFUVGsyWTBGM0t6bC1VSDQmY3JlYXRlX3RpbWU9MTUyMDUyMTI1MiZub25jZT0wLjQxNTk0NjIxODcxNDYzMTY3JnJvbGU9cHVibGlzaGVyJmV4cGlyZV90aW1lPTE1MjExMjYwNzEmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=>";
+
+    var session = OT.initSession(apiKey, sessionId);
+
+    session.connect(token, function(error) {
+      var publisher = OT.initPublisher('camera');
+      session.publish(publisher, function() {
+        screenshare();
+      });
+    });
+
+    session.on('streamCreated', function(event) {
+      session.subscribe(event.stream);
+    });
+
+    // For Google Chrome only, register your extension by ID. You can
+    // find it at chrome://extensions once the extension is installed.
+    //
+    // The last parameter assumes you are using the latest version (version 2)
+    // of the OpenTok Chrome extension source code.
+    OT.registerScreenSharingExtension('chrome', '<fpbojgimpcfgaikgpfgjabidflmkbbhe>', 2);
+
+    function screenshare() {
+      OT.checkScreenSharingCapability(function(response) {
+        if (!response.supported || response.extensionRegistered === false) {
+          alert('This browser does not support screen sharing.');
+        } else if (response.extensionInstalled === false) {
+          alert('Please install the screen sharing extension and load your app over https.');
+        } else {
+          // Screen sharing is available. Publish the screen.
+          var screenSharingPublisher = OT.initPublisher('screen-preview', {videoSource: 'screen'});
+          session.publish(screenSharingPublisher, function(error) {
+            if (error) {
+              alert('Could not share the screen: ' + error.message);
+            }
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
