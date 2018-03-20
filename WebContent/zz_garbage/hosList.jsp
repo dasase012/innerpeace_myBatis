@@ -1,5 +1,4 @@
-<%@ page import="member2.HospitalDataBean" %>
-<%@ page import="member2.HospitalDBBean" %>
+
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
