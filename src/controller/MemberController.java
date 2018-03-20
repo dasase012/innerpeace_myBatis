@@ -258,7 +258,7 @@ public class MemberController extends Action{
 		return  "/members/deleteForm.jsp"; 
 	} 
 	
-	public String deletePro(HttpServletRequest request,
+	/*public String deletePro(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
 		HttpSession session = request.getSession();
 		
@@ -275,7 +275,7 @@ public class MemberController extends Action{
 		
 			return "/members/deletePro.jsp";
 		
-	} 
+	} */
 	
 	public String appt(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
@@ -332,7 +332,7 @@ public class MemberController extends Action{
 		
 		System.out.println(records); 
 		ApptDBMybatis dbPro = ApptDBMybatis.getInstance(); 
-		dbPro.insertData(records);
+		dbPro.insertAppt(records);
 		
 		req.setAttribute("pageNum", pageNum);
 		res.sendRedirect(req.getContextPath()+"/member/apptlist?pageNum="+pageNum+"&boardid="+boardid);
@@ -358,7 +358,7 @@ public class MemberController extends Action{
 		ApptDBMybatis dbPro = ApptDBMybatis.getInstance(); 
 		
 		int num = Integer.parseInt(request.getParameter("num"));
-		int check = dbPro.deleteData(num);
+		int check = dbPro.deleteAppt(num);
 		
 		if(request.getParameter("num")!=null && !request.getParameter("num").equals("")) {
 			request.setAttribute("check", check);records.setNum(Integer.parseInt(request.getParameter("num")));

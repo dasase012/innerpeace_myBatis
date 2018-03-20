@@ -88,13 +88,13 @@ public class JoinDBMybatis extends MybatisConnector{
 					return 0;	//비밀번호 불일치
 				}
 			
-		/*System.out.println("아이디 없다");*/
+		/*System.out.println("아이디 없다");
 			
 			return -1; //아이디가 없다
 
 			return -2; //데이터베이스 오류
-			
-			sqlSession.close();
+*/			
+		/*	sqlSession.close();*/
 
 
 }
@@ -167,7 +167,7 @@ public class JoinDBMybatis extends MybatisConnector{
 			return chk;
 
 		}
-		
+		/*
 		//****delete
 		public int deleteData(String id, String pwd, String admin)throws Exception{
 			
@@ -194,6 +194,6 @@ public class JoinDBMybatis extends MybatisConnector{
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd); }
 		
-		}
+		}*/
 
 }

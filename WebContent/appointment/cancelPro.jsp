@@ -11,7 +11,7 @@
  		<script language="JavaScript">
 		alert("예약하신 진료일정이 취소되었습니다.")
 		</script>
- 		<meta http-equiv="Refresh" content="1;url=/innerpeace_aaa/member/apptlist?id=${id}&pageNum=${pageNum}">	
+ 		<meta http-equiv="Refresh" content="1;url=/innerpeace_myBatis/member/apptlist?id=${id}&pageNum=${pageNum}">	
 	</c:if>
 	<c:if test="${check != 1}">
 		<script>

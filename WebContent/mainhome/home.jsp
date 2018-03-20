@@ -29,20 +29,20 @@
 	<!-- body -->	
 	<div class="w3-row w3-display-middle" style="bottom: 150px;">
 	  <div class="w3-quarter w3-container">
-	    <a href="/innerpeace_aaa/member/appt">
-	     <img src="/innerpeace_aaa/resources/appt.png" title="진료예약" class="w3-image w3-padding-large w3-circle w3-btn " style="width:250px"></a>
+	    <a href="/innerpeace_myBatis/member/appt">
+	     <img src="/innerpeace_myBatis/resources/appt.png" title="진료예약" class="w3-image w3-padding-large w3-circle w3-btn " style="width:250px"></a>
 	  </div>
 	  <div class="w3-quarter w3-container">
-	    <a href="/innerpeace_aaa/member/video">
-		 <img src="/innerpeace_aaa/resources/videocall.png" title="원격진료" class="w3-image w3-padding-large w3-circle w3-btn " style="width:250px;"></a>
+	    <a href="/innerpeace_myBatis/member/video">
+		 <img src="/innerpeace_myBatis/resources/videocall.png" title="원격진료" class="w3-image w3-padding-large w3-circle w3-btn " style="width:250px;"></a>
 	  </div>
 	  <div class="w3-quarter w3-container">
-	    <a href="/innerpeace_aaa/member/map">
-	     <img src="/innerpeace_aaa/resources/map.png" title="병원찾기" class="w3-image w3-padding-large w3-circle w3-btn" style="width:250px;"></a>
+	    <a href="/innerpeace_myBatis/member/map">
+	     <img src="/innerpeace_myBatis/resources/map.png" title="병원찾기" class="w3-image w3-padding-large w3-circle w3-btn" style="width:250px;"></a>
 	  </div>
 	  <div class="w3-quarter w3-container">
-	    <a href="/innerpeace_aaa/member/updateForm">
-	     <img src="/innerpeace_aaa/resources/acct.png" title="회원정보" class="w3-image w3-padding-large w3-circle w3-btn" style="width:250px;"></a>
+	    <a href="/innerpeace_myBatis/member/updateForm">
+	     <img src="/innerpeace_myBatis/resources/acct.png" title="회원정보" class="w3-image w3-padding-large w3-circle w3-btn" style="width:250px;"></a>
 	  </div>
 	</div>
 

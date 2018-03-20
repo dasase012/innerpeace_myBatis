@@ -64,5 +64,41 @@
          select passwd FROM userlist WHERE userid=#{userid}
       </select> -->
 
+	<!-- Appt table -->
+	  <select id="getRecords" resultType="Member" parameterType="hashmap">
+         select * from (select rownum rnum,a.* 
+						from (select num,tel2,con_past,con_cat,
+						doc,appt_date1,appt_date2,medication,med_name,text 
+						from consultation where boardid = #{boardid} and id = #{id} order by num desc) 
+						a ) where rnum between #{startRow} and #{endRow} 
+      </select>
+      
+      <select id="getNextNumber" resultType="int">
+      	select nvl(max(num),0) from consultation
+      </select> 
+      
+      <select id="getApptCount" resultType="int" parameterType="hashmap">
+         select nvl(count(*),0) from consultation where boardid = #{boardid}
+         <if test="boardid != null">
+            WHERE boardid = #{boardid}
+         </if>
+      </select>
+      
+      <select id="getRecord" parameterType="hashmap" resultType="Member">
+      	select * from consultation where num = #{num} and boardid = #{boardid}
+      </select>   
+	
+	  <insert id="insertAppt" parameterType="Member">
+      	insert into consultation(num,id,boardid,tel2,con_past,con_cat, "
+							+ "doc,appt_date1,appt_date2,medication,med_name,text) "
+							+ "values(#{num},#{id},#{boardid},#{tel2},#{con_past},#{con_cat},
+							#{doc},#{appt_date1},#{appt_date2},#{medication},#{med_name},#{text})
+      </insert>
+      
+      <delete id="deleteAppt" parameterType="hashmap">
+    	delete from consultation where num=#{num}
+      </delete>
+      
+      
      
 </mapper>

@@ -10,7 +10,7 @@
 <style type="text/css">
 	body {
 		background-size: cover;
-		background-image: url("/innerpeace_aaa/resources/livingroom.png");
+		background-image: url("/innerpeace_myBatis/resources/livingroom.png");
  		padding-top: 5en;
  		display: flex;
  		justify-content: center;

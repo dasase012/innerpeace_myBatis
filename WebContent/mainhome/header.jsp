@@ -28,7 +28,7 @@
 	<!-- Navbar (sit on top) -->
 		<div class="w3-top" style="left: 0px;" >
 		  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:3px;height: 74px;">
-		    <a href="/innerpeace_aaa/member/home" class="w3-bar-item w3-btn w3-display-topmiddle" 
+		    <a href="/innerpeace_myBatis/member/home" class="w3-bar-item w3-btn w3-display-topmiddle" 
 		    										style="padding-bottom: 0;padding-top:0;text-decoration: none;">
 		    	<h1 style="font-family:'Fredericka the Great', cursive; height: 54px;">innerpeace</h1></a>
 		    <!-- Right-sided navbar links. Hide them on small screens -->
@@ -38,21 +38,21 @@
 				   <button class="w3-button w3-round-large w3-black" style="padding-right: 20px; padding-left: 20px; font-family:'Fredericka the Great', cursive;">MENU</button>
 				   <div class="w3-dropdown-content w3-bar-block" style="right:0; font-family:'Fredericka the Great', cursive;">
 				   	 <p><b>Welcome ${id}!</b></p>
-				     <a href="/innerpeace_aaa/member/appt" class="w3-bar-item w3-button">진료예약</a>
-				     <a href="/innerpeace_aaa/member/apptlist" class="w3-bar-item w3-button">예약관리</a>
-		    		 <a href="/innerpeace_aaa/member/video" class="w3-bar-item w3-button">원격진료</a>
-		    		 <a href="/innerpeace_aaa/member/map" class="w3-bar-item w3-button">상담기관 찾기</a><!-- 	 
+				     <a href="/innerpeace_myBatis/member/appt" class="w3-bar-item w3-button">진료예약</a>
+				     <a href="/innerpeace_myBatis/member/apptlist" class="w3-bar-item w3-button">예약관리</a>
+		    		 <a href="/innerpeace_myBatis/member/video" class="w3-bar-item w3-button">원격진료</a>
+		    		 <a href="/innerpeace_myBatis/member/map" class="w3-bar-item w3-button">상담기관 찾기</a><!-- 	 
 				     <a href="/innerpeace_aaa/appointment/history.jsp" class="w3-bar-item w3-button">진료기록</a> -->
 				     
 				     <c:if test="${id != 'admin'}">
-				     <a href="/innerpeace_aaa/member/updateForm" class="w3-bar-item w3-button">회원정보</a>
+				     <a href="/innerpeace_myBatis/member/updateForm" class="w3-bar-item w3-button">회원정보</a>
 				     </c:if>
 				     <c:if test="${id == 'admin'}">
-				     <a href="/innerpeace_aaa/member/list" class="w3-bar-item w3-button">회원리스트보기</a>
+				     <a href="/innerpeace_myBatis/member/list" class="w3-bar-item w3-button">회원리스트보기</a>
 				     </c:if>
 				   </div>
 				 </div>
-			      <a href="/innerpeace_aaa/member/logout">
+			      <a href="/innerpeace_myBatis/member/logout">
 				<i id="logout" class="material-icons" title="로그아웃" style="font-size:36px; margin-top: 10px;">power_settings_new</i>
 			  </a>
 		    </div>

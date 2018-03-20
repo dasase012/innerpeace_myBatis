@@ -77,13 +77,8 @@ public class ApptDBMybatis extends MybatisConnector{
 
 		
 	//*****insert: max로 number 증가시켰는디... 흠
-		public void insertData(ApptDataBean info) {
-			/*insert into consultation(num,id,boardid,tel2,con_past,con_cat, "
-							+ "doc,appt_date1,appt_date2,medication,med_name,text) "
-							+ "values(?,?,?,?,?,?,?,?,?,?,?,?)
-				*/
-			
-			
+		public void insertAppt(ApptDataBean info) {
+					
 			sqlSession = sqlSession();
 			int number = sqlSession.selectOne(namespace+".getNextNumber", info);
 					//=============>Board.xml로 들어갈 부분			
@@ -96,21 +91,19 @@ public class ApptDBMybatis extends MybatisConnector{
 		
 				info.setNum(number);
 				
-				sqlSession.insert(namespace+".insertData", info);
+				sqlSession.insert(namespace+".insertAppt", info);
 				sqlSession.commit();
 				sqlSession.close();
 					
 		}	
 	
 		//delete
-				public int deleteData(int num)throws Exception{
-					
-					/*delete from consultation where num=? */
-					
+				public int deleteAppt(int num)throws Exception{
+				
 					sqlSession = sqlSession();
 					Map map = new HashMap();
 					map.put("num", num);
-					int chk = sqlSession.delete(namespace+".deleteData", map);
+					int chk = sqlSession.delete(namespace+".deleteAppt", map);
 					sqlSession.commit(); 
 					sqlSession.close();
 					return chk;						
