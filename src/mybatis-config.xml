@@ -4,6 +4,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="member2.JoinDataBean" alias="Member"/>
+		<typeAlias type="member2.ApptDataBean" alias="Appt"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -16,5 +17,8 @@
 		</dataSource>
 		</environment> 
 	</environments>
-	<mappers><mapper resource="Member.xml"/></mappers>
+	<mappers>
+		<mapper resource="Member.xml"/>
+		<mapper resource="Appt.xml"/>
+	</mappers>
 </configuration>

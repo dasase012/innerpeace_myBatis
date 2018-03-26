@@ -20,7 +20,7 @@
 		<h3><b><u>전체 회원수:${count}</u></b></h3>
 	</span>
 <p class="w3-right w3-padding-right-large">
-	<a href="/innerpeace_aaa/member/home">메인페이지로 가기</a></p>
+	<a href="/innerpeace_myBatis/member/home">메인페이지로 가기</a></p>
 	
 	<c:if test="${count==0 }">
 	<table class="table-bordered" width="700">

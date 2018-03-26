@@ -10,7 +10,7 @@
  		<script language="JavaScript">
 		alert("Å»Åð°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.")
 		</script>
- 		<meta http-equiv="Refresh" content="0;url=/innerpeace_aaa/member/index">	
+ 		<meta http-equiv="Refresh" content="0;url=/innerpeace_myBatis/member/index">	
 	</c:if> 
 	<c:if test="${check != 1}">
 		<script>

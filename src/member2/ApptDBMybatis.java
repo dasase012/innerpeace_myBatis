@@ -28,17 +28,13 @@ public class ApptDBMybatis extends MybatisConnector{
 		
 		//getRecords
 		public List getRecords(int startRow, int endRow, String boardid, String id) {
-			/*select * from " 
-						+"(select rownum rnum,a.* "
-						+" from (select num,tel2,con_past,con_cat,doc,appt_date1,appt_date2,medication,med_name,text "
-						+ "from consultation where boardid = ? and id = ? order by num desc) "
-						+ " a ) where rnum between ? and ? */
+			
 			sqlSession = sqlSession();
 			Map map = new HashMap();
-			map.put("startRow", startRow);
-			map.put("endRow", endRow);
 			map.put("boardid", boardid);
 			map.put("id", id);
+			map.put("startRow", startRow);
+			map.put("endRow", endRow);
 			List li = sqlSession.selectList(namespace+".getRecords",map);
 			sqlSession.close();
 			return li;
@@ -46,7 +42,6 @@ public class ApptDBMybatis extends MybatisConnector{
 			
 		//getApptCount
 		public int getApptCount(String boardid){
-			/*select nvl(count(*),0) from consultation where boardid = ? */
 			int x = 0;
 			sqlSession = sqlSession();
 			Map map = new HashMap();
@@ -58,7 +53,6 @@ public class ApptDBMybatis extends MybatisConnector{
 		
 		//getRecord
 		public ApptDataBean getRecord(int num, String boardid/*, String chk*/) {
-			/*select * from consultation where num = ? and boardid = ? */
 			sqlSession = sqlSession();
 			Map map = new HashMap();
 			map.put("num", num);
@@ -66,29 +60,17 @@ public class ApptDBMybatis extends MybatisConnector{
 			
 
 			ApptDataBean records = sqlSession.selectOne(namespace+".getRecord",map);
-			sqlSession.commit(); //update가 있으니까 commit!
 			sqlSession.close();
 			return records;
 		}
-	
-	/*private Date toDate(Timestamp date) {
-		return date == null?null:new Date(date.getTime());
-	}*/
 
 		
-	//*****insert: max로 number 증가시켰는디... 흠
+	
 		public void insertAppt(ApptDataBean info) {
 					
 			sqlSession = sqlSession();
 			int number = sqlSession.selectOne(namespace+".getNextNumber", info);
-					//=============>Board.xml로 들어갈 부분			
-			
-			//number=number+1;이게 정상적인 번호 증가 방식은 아님. 
-			//ORACLE DB에 select boardser.nextval from dual;를 넣어서 자동증가하도록 해야함.
-			//pstmt = con.prepareStatement("select nvl(max(num),0) from consultation");
-		    //rs=pstmt.executeQuery();
-		    //if (rs.next()) {  max=rs.getInt(1)+1;}   
-		
+
 				info.setNum(number);
 				
 				sqlSession.insert(namespace+".insertAppt", info);

@@ -76,7 +76,7 @@
 	<!-- input form -->
 	<!-- <form class="w3-container w3-display-topmiddle w3-card-4 w3-white w3-text-black" action="apptPro" method="post"
 	style="height: 100%; width:600px; margin-top: 340px; padding: 10;"> -->
-	<form class="w3-container w3-card-4 w3-white w3-text-black" action="apptPro" method="post" style="/* height: 100%; */margin-top:50px; width: 800; height: 700; margin-bottom: 50; top: 400px;">
+	<form class="w3-container w3-card-4 w3-white w3-text-black" action="apptPro" method="post" style="margin-top:50px; width: 800; height: 700; margin-bottom: 50; top: 400px;">
 	<div class="w3-row w3-section">
 		<input type="hidden" name="num" value="${num}">
 		<input type="hidden" name="id" value="${member.id}">

@@ -1,19 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+
 <html>
 <head><title>게시판</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 
+	
+<body>
+	<!-- header -->
+	<%@ include file="/mainhome/header.jsp" %>
+	
 	<form method="post" name="updateform" action="updatePro" >
 	<input type="hidden" name="id" value="${member.id}">
 	<input type="hidden" name="pageNum" value="${pageNum}">
 	<form class="w3-container w3-card-4 w3-white w3-text-black" style="height: 100%;">
 	<div class="w3-row w3-section">
-<body>
-	<!-- header -->
-	<%@ include file="/mainhome/header.jsp" %>
+	
 	
 <center class="w3-card-4 w3-display-middle" style="margin-top:50px; width: 800; height: 600; margin-bottom: 50; top: 400px;"><p><h3><b><u>회원 정보</u></b></h3></p>
 <div class="container" id="info">
@@ -65,10 +69,10 @@
 			<input  class="w3-button w3-amber w3-round" type="submit" value="정보수정" >  
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<input  class="w3-button w3-amber w3-round" type="button" value="탈퇴" 
-			onclick="document.location.href='/innerpeace_aaa/member/deleteForm?id=${member.id}&pageNum=${pageNum}'">
+			onclick="document.location.href='/innerpeace_myBatis/member/deleteForm?id=${member.id}&pageNum=${pageNum}'">
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<input  class="w3-button w3-amber w3-round" type="button" value="취소" 
-			onclick="document.location.href='/innerpeace_aaa/member/home'">
+			onclick="document.location.href='/innerpeace_myBatis/member/home'">
 	</td></tr> </table></div></center>
 	
 	<!-- footer -->

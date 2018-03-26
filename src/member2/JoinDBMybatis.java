@@ -62,52 +62,20 @@ public class JoinDBMybatis extends MybatisConnector{
 			Map map = new HashMap();
 			map.put("id", id);
 			JoinDataBean member = sqlSession.selectOne(namespace+".getMember",map);
-			//sqlSession.commit(); //update가 있으니까 commit!
 			sqlSession.close();
 			return member;
 		}
-	
-	/*private Date toDate(Timestamp date) {
-		return date == null?null:new Date(date.getTime());
-	}*/
-	
-	//login
-		public int login(String id, String pwd) {
-			sqlSession = sqlSession();
-			Map map = new HashMap();
-			map.put("id", id);
-			map.put("pwd", pwd);
-			int chk = sqlSession.selectOne(namespace+".login", map);
-			/*return chk;*/
-			
-			if(id.equals(pwd)) {
-					
-					return 1;	//로그인 성공
-			}else {
-				System.out.println("불일치");
-					return 0;	//비밀번호 불일치
-				}
-			
-		/*System.out.println("아이디 없다");
-			
-			return -1; //아이디가 없다
 
-			return -2; //데이터베이스 오류
-*/			
-		/*	sqlSession.close();*/
-
-
-}
-/*    public int login(String userid, String passwd) {
+    public int login(String id, String pwd) {
 			      sqlSession = sqlSession();
 			      Map<String,String> map = new HashMap<String,String>();
-			      map.put("userid", userid);
-			      map.put("passwd", passwd);
+			      map.put("id", id);
+			      map.put("pwd", pwd);
 			      int chk=0;
 			      
 			      Map<String,String> map2=sqlSession.selectOne(namespace+".login", map);
 			      
-			      if (map2!=null && map2.containsValue(passwd)) {
+			      if (map2!=null && map2.containsValue(pwd)) {
 			         chk=1;
 			         sqlSession.close();
 			         return chk;
@@ -123,17 +91,14 @@ public class JoinDBMybatis extends MybatisConnector{
 			         return chk;
 			      }
 			   
-			   }*/
+			   }
 		
 		
 		
 	//insert
 		public void insertData(JoinDataBean info) {
 			sqlSession = sqlSession();
-			/*int number = sqlSession.selectOne(namespace+".getNextNumber", info);
-			//number=number+1;이게 정상적인 번호 증가 방식은 아님. 
-			//ORACLE DB에 select boardser.nextval from dual;를 넣어서 자동증가하도록 해야함.
-*/						
+			
 				sqlSession.insert(namespace+".insertData", info);
 				sqlSession.commit();
 				sqlSession.close();
@@ -167,7 +132,7 @@ public class JoinDBMybatis extends MybatisConnector{
 			return chk;
 
 		}
-		/*
+		
 		//****delete
 		public int deleteData(String id, String pwd, String admin)throws Exception{
 			
@@ -176,24 +141,19 @@ public class JoinDBMybatis extends MybatisConnector{
 			map.put("id", id);
 			map.put("pwd", pwd);
 			map.put("admin", admin);
-			int chk = sqlSession.delete(namespace+".deleteData", map);
-			sqlSession.commit(); 
-			sqlSession.close();
-			return chk;
-			
+		
 			int x = -1;
 			
 			if(admin.equals("admin")) {
-				String sql = "delete from member where id=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);				
+				x = sqlSession.delete(namespace+".deleteData2", map);	
+			
 			}
 			else {
-			String sql = "delete from member where id=? and pwd=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2, pwd); }
-		
-		}*/
+				x = sqlSession.delete(namespace+".deleteData", map);
+			}
+			sqlSession.commit(); 
+			sqlSession.close();
+			return x;
+		}
 
 }

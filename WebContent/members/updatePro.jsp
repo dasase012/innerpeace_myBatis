@@ -6,7 +6,7 @@
 <head><title>Insert title here</title></head>
 <body>
 
-<meta http-equiv="Refresh" content="0;url=/innerpeace_aaa/member/home?id=${id}&pageNum=${pageNum}">
+<meta http-equiv="Refresh" content="0;url=/innerpeace_myBatis/member/home?id=${id}&pageNum=${pageNum}">
 	<c:if test="${chk == 1}">
 		<script>
 		alert("회원정보가 수정되었습니다.")</script>

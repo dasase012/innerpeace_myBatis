@@ -92,12 +92,7 @@ public class MemberController extends Action{
 			return "/members/loginPro.jsp";
 		}else if (pwcheck==0) {
 			return "/members/loginPro.jsp";
-		}/*else if(id.equals("admin")){
-  			  session.setAttribute("id",id);
-  			  session.setAttribute("name", name);
-			 response.sendRedirect("/innerpeace_aaa/member/list?id="+id);
-  			
-		}*/else{
+		}else{
 			  session.setAttribute("id",id);
 			  session.setAttribute("name", name);	//name 저장 >> welcome 에 name을 넘겨줌
 			  System.out.println(name); 
@@ -258,7 +253,7 @@ public class MemberController extends Action{
 		return  "/members/deleteForm.jsp"; 
 	} 
 	
-	/*public String deletePro(HttpServletRequest request,
+	public String deletePro(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 
 		HttpSession session = request.getSession();
 		
@@ -275,7 +270,7 @@ public class MemberController extends Action{
 		
 			return "/members/deletePro.jsp";
 		
-	} */
+	} 
 	
 	public String appt(HttpServletRequest request,
 			 HttpServletResponse response)  throws Throwable { 

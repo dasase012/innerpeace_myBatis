@@ -5,25 +5,12 @@
    
 <mapper namespace="ldg.mybatis">
 	
-<!-- 	 <select id="boardList" resultType="Board" parameterType="hashmap">
-         select * from board
-         <if test="num != null">
-            WHERE num = #{num}
-         </if>
-         <if test="boardid != null">
-            WHERE boardid = #{boardid}
-         </if>      
-      </select>  -->
-
   	  <select id="getMembers" resultType="Member" parameterType="hashmap">
          select * from (select rownum rnum,a.* from (select id,name,pwd,gender,birthdate,tel,email, 
 						con_past,con_date,con_cat,position,regdate	
 						from member order by regdate desc) 
 						a ) where rnum between #{startRow} and #{endRow}
       </select>
-      <!-- <select id="getNextNumber" resultType="int">
-      	select boardser.nextval from dual
-      </select> -->
 
       <select id="getMemberCount" resultType="int" parameterType="hashmap">
          select nvl(count(*),0) from member
@@ -49,7 +36,11 @@
       </update>
       
       <delete id="deleteData" parameterType="hashmap">
-    	delete from board where num=#{num} and passwd = #{passwd}
+    	delete from member where id=#{id} and pwd = #{pwd}
+      </delete>
+      
+      <delete id="deleteData2" parameterType="hashmap">
+    	delete from member where id=#{id}
       </delete>
       
       
@@ -57,48 +48,8 @@
       	select id from member where id = #{id}
       </select>
       
-      <select id="login" parameterType="hashmap" resultType="int">
+      <select id="login" parameterType="hashmap" resultType="map">
       	SELECT pwd FROM member WHERE id = #{id}
       </select> 
-      <!-- <select id="login" parameterType="hashmap" resultType="map">
-         select passwd FROM userlist WHERE userid=#{userid}
-      </select> -->
-
-	<!-- Appt table -->
-	  <select id="getRecords" resultType="Member" parameterType="hashmap">
-         select * from (select rownum rnum,a.* 
-						from (select num,tel2,con_past,con_cat,
-						doc,appt_date1,appt_date2,medication,med_name,text 
-						from consultation where boardid = #{boardid} and id = #{id} order by num desc) 
-						a ) where rnum between #{startRow} and #{endRow} 
-      </select>
-      
-      <select id="getNextNumber" resultType="int">
-      	select nvl(max(num),0) from consultation
-      </select> 
-      
-      <select id="getApptCount" resultType="int" parameterType="hashmap">
-         select nvl(count(*),0) from consultation where boardid = #{boardid}
-         <if test="boardid != null">
-            WHERE boardid = #{boardid}
-         </if>
-      </select>
-      
-      <select id="getRecord" parameterType="hashmap" resultType="Member">
-      	select * from consultation where num = #{num} and boardid = #{boardid}
-      </select>   
-	
-	  <insert id="insertAppt" parameterType="Member">
-      	insert into consultation(num,id,boardid,tel2,con_past,con_cat, "
-							+ "doc,appt_date1,appt_date2,medication,med_name,text) "
-							+ "values(#{num},#{id},#{boardid},#{tel2},#{con_past},#{con_cat},
-							#{doc},#{appt_date1},#{appt_date2},#{medication},#{med_name},#{text})
-      </insert>
-      
-      <delete id="deleteAppt" parameterType="hashmap">
-    	delete from consultation where num=#{num}
-      </delete>
-      
-      
      
 </mapper>
